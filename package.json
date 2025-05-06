@@ -2,6 +2,7 @@
   "name": "axyo-lifestyle",
   "description": "Discover a new way to live with Axyo, your Lifestyle assistant.",
   "version": "a0.1.0",
+  "license": "CC-BY-NC-ND-4.0",
   "private": true,
   "type": "module",
   "engines": {
