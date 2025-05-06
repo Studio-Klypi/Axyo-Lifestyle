@@ -1,15 +1,31 @@
 <script setup lang="ts">
 import { Facebook } from "lucide-vue-next";
+import { toTypedSchema } from "@vee-validate/zod";
+import * as z from "zod";
+import { useForm } from "vee-validate";
 import Page from "~/components/shared/composition/Page.vue";
+import { PasswordRegex } from "~/lib/constants";
 
 definePageMeta({
   layout: "authentication",
 });
+
+const schema = toTypedSchema(z.object({
+  email: z.string().email(),
+  password: z.string().regex(PasswordRegex),
+}));
+const form = useForm({
+  validationSchema: schema,
+});
+const submit = form.handleSubmit(async values => console.log(values));
 </script>
 
 <template>
   <Page name="auth/login">
-    <form class="flex flex-col gap-6">
+    <form
+      class="flex flex-col gap-6"
+      @submit="submit"
+    >
       <header class="flex flex-col items-center gap-2 text-center">
         <h1 class="text-2xl font-bold">
           {{ $t("login.title") }}
