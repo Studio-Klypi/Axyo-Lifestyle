@@ -2,15 +2,15 @@
 import tailwindcss from "@tailwindcss/vite";
 
 export default defineNuxtConfig({
-  modules: ["@nuxt/eslint", "@nuxtjs/i18n"],
+  modules: ["@nuxt/eslint", "@nuxtjs/i18n", "@nuxtjs/color-mode"],
   devtools: { enabled: true },
+  css: ["~/tailwind.css"],
   compatibilityDate: "2024-11-01",
   vite: {
     plugins: [
       tailwindcss(),
     ],
   },
-  css: ["~/tailwind.css"],
   eslint: {
     checker: true,
     config: {
@@ -31,5 +31,11 @@ export default defineNuxtConfig({
         file: "en.json",
       },
     ],
+  },
+  colorMode: {
+    preference: "system",
+    fallback: "light",
+    classSuffix: "",
+    classPrefix: "",
   },
 });
