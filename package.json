@@ -28,12 +28,16 @@
     "@nuxtjs/color-mode": "3.5.2",
     "@nuxtjs/google-fonts": "3.2.0",
     "@nuxtjs/i18n": "9.5.4",
+    "@prisma/client": "^6.7.0",
     "@tailwindcss/vite": "^4.1.5",
+    "argon2": "^0.43.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "eslint": "^9.0.0",
     "lucide-vue-next": "^0.507.0",
     "nuxt": "^3.17.2",
+    "nuxt-mailer": "0.11.0",
+    "nuxt-scheduler": "0.1.9",
     "shadcn-nuxt": "2.1.0",
     "tailwind-merge": "^3.2.0",
     "tailwindcss": "^4.1.5",
@@ -42,6 +46,7 @@
     "vue-router": "^4.5.1"
   },
   "devDependencies": {
+    "prisma": "^6.7.0",
     "shadcn-vue": "^2.1.0",
     "typescript": "^5.8.3"
   }

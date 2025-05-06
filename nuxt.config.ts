@@ -8,6 +8,8 @@ export default defineNuxtConfig({
     "@nuxtjs/color-mode",
     "@nuxtjs/google-fonts",
     "shadcn-nuxt",
+    "nuxt-mailer",
+    "nuxt-scheduler",
   ],
   devtools: { enabled: true },
   css: ["~/tailwind.css"],
@@ -16,6 +18,18 @@ export default defineNuxtConfig({
     fallback: "light",
     classSuffix: "",
     classPrefix: "",
+  },
+  runtimeConfig: {
+    mailer: {
+      host: "",
+      port: "",
+      user: "",
+      pass: "",
+      from: {
+        name: "",
+        email: "",
+      },
+    },
   },
   compatibilityDate: "2024-11-01",
   vite: {
