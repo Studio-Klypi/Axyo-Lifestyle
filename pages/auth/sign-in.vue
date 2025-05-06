@@ -68,7 +68,7 @@ const submit = form.handleSubmit(async (values) => {
             <div class="flex items-center">
               <FormLabel>{{ $t("login.form.password") }}</FormLabel>
               <NuxtLinkLocale
-                to="/auth/login"
+                to="/auth/sign-in"
                 tabindex="1"
                 class="ml-auto text-sm underline-offset-4 hover:underline"
               >
