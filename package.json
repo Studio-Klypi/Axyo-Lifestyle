@@ -1,7 +1,20 @@
 {
-  "name": "nuxt-app",
+  "name": "axyo-lifestyle",
+  "description": "Discover a new way to live with Axyo, your Lifestyle assistant.",
+  "version": "a0.1.0",
   "private": true,
   "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "packageManager": "yarn@1.22.22",
+  "repository": {
+    "url": "https://github.com/Studio-Klypi/Axyo-Lifestyle"
+  },
+  "bugs": {
+    "url": "https://github.com/Studio-Klypi/Axyo-Lifestyle/issues",
+    "email": "contact@studio-klypi.com"
+  },
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
