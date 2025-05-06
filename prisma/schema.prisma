@@ -48,7 +48,7 @@ model AuthSession {
   userUuid  String
   token     String    @default(uuid())
   createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
+  expiresAt DateTime
   revokedAt DateTime?
 
   user User @relation(fields: [userUuid], references: [uuid], onDelete: Cascade)
