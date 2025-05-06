@@ -8,6 +8,10 @@ import { PasswordRegex } from "~/lib/constants";
 
 definePageMeta({
   layout: "authentication",
+  auth: {
+    mode: "strict",
+    value: false,
+  },
 });
 
 const schema = toTypedSchema(z.object({
