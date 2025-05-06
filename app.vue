@@ -1,7 +1,17 @@
+<script setup lang="ts">
+import { Toaster } from "vue-sonner";
+</script>
+
 <template>
   <div>
+    <NuxtLoadingIndicator />
     <NuxtRouteAnnouncer />
-    <h1>{{ $t("app.name") }}</h1>
-    <p>{{ $t("app.tag-line") }}</p>
+
+    <Toaster
+      position="top-right"
+      rich-colors
+    />
+
+    <NuxtLayout />
   </div>
 </template>
