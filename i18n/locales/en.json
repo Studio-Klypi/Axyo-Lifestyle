@@ -2,5 +2,47 @@
   "app": {
     "name": "Axyo",
     "tag-line": "Your lifestyle Assistant"
+  },
+  "btn": {
+    "sign-in": "Sign in",
+    "sign-up": "Sign up"
+  },
+  "labels": {
+    "continue-with": "Or continue with",
+    "providers": {
+      "facebook": "Facebook"
+    }
+  },
+  "login": {
+    "title": "Welcome back",
+    "caption": "Enter your email below to login to your account",
+    "form": {
+      "email": "Email",
+      "password": "Password",
+      "forgot-password": "Forgot your password?",
+      "login-btn": "Login",
+      "login-with": "Login with {provider}",
+      "no-account": "Don't have an account?"
+    },
+    "toasters": {
+      "invalid-credentials": "Credentials are invalid!"
+    }
+  },
+  "register": {
+    "title": "Welcome",
+    "caption": "Fill out the form to begin",
+    "form": {
+      "username": "Username",
+      "email": "Email",
+      "password": "Password",
+      "confirm": "Repeat password",
+      "register-btn": "Register",
+      "register-with": "Register with {provider}",
+      "got-account": "Already have an account?"
+    },
+    "toasters": {
+      "invalid-credentials": "Credentials are invalid!",
+      "username-already-taken": "\"{username}\" is already taken!"
+    }
   }
 }
