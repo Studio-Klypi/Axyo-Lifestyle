@@ -7,6 +7,7 @@ export default defineNuxtConfig({
     "@nuxtjs/i18n",
     "@nuxtjs/color-mode",
     "@nuxtjs/google-fonts",
+    "shadcn-nuxt",
   ],
   devtools: { enabled: true },
   css: ["~/tailwind.css"],
@@ -32,6 +33,14 @@ export default defineNuxtConfig({
       },
     },
   },
+  googleFonts: {
+    families: {
+      Lexend: {
+        ital: "100..900",
+        wght: "100..900",
+      },
+    },
+  },
   i18n: {
     defaultLocale: "en",
     locales: [
@@ -43,12 +52,8 @@ export default defineNuxtConfig({
       },
     ],
   },
-  googleFonts: {
-    families: {
-      Lexend: {
-        ital: "100..900",
-        wght: "100..900",
-      },
-    },
-  },
+  shadcn: {
+    prefix: "",
+    componentDir: "./components/ui",
+  }
 });
