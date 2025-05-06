@@ -1,18 +1,57 @@
 {
-  "name": "nuxt-app",
+  "name": "axyo-lifestyle",
+  "description": "Discover a new way to live with Axyo, your Lifestyle assistant.",
+  "version": "a0.1.0",
+  "license": "CC-BY-NC-ND-4.0",
   "private": true,
   "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "packageManager": "yarn@1.22.22",
+  "repository": {
+    "url": "https://github.com/Studio-Klypi/Axyo-Lifestyle"
+  },
+  "bugs": {
+    "url": "https://github.com/Studio-Klypi/Axyo-Lifestyle/issues",
+    "email": "contact@studio-klypi.com"
+  },
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "lint": "eslint . --fix"
   },
   "dependencies": {
+    "@nuxt/eslint": "1.3.0",
+    "@nuxtjs/color-mode": "3.5.2",
+    "@nuxtjs/google-fonts": "3.2.0",
+    "@nuxtjs/i18n": "9.5.4",
+    "@pinia/nuxt": "0.11.0",
+    "@prisma/client": "^6.7.0",
+    "@tailwindcss/vite": "^4.1.5",
+    "argon2": "^0.43.0",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "eslint": "^9.0.0",
+    "lucide-vue-next": "^0.507.0",
     "nuxt": "^3.17.2",
+    "nuxt-mailer": "0.11.0",
+    "nuxt-scheduler": "0.1.9",
+    "pinia": "^3.0.2",
+    "shadcn-nuxt": "2.1.0",
+    "tailwind-merge": "^3.2.0",
+    "tailwindcss": "^4.1.5",
+    "tw-animate-css": "^1.2.9",
     "vue": "^3.5.13",
-    "vue-router": "^4.5.1"
+    "vue-router": "^4.5.1",
+    "vue-sonner": "^1.3.2"
   },
-  "packageManager": "yarn@1.22.22+sha1.ac34549e6aa8e7ead463a7407e1c7390f61a6610"
+  "devDependencies": {
+    "prisma": "^6.7.0",
+    "shadcn-vue": "^2.1.0",
+    "typescript": "^5.8.3"
+  }
 }
