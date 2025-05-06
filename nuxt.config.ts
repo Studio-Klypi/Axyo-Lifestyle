@@ -11,6 +11,7 @@ export default defineNuxtConfig({
     "nuxt-mailer",
     "nuxt-scheduler",
     "@pinia/nuxt",
+    "@nuxt/image",
   ],
   devtools: { enabled: true },
   css: ["~/tailwind.css"],
