@@ -2,9 +2,20 @@
 import tailwindcss from "@tailwindcss/vite";
 
 export default defineNuxtConfig({
-  modules: ["@nuxt/eslint", "@nuxtjs/i18n", "@nuxtjs/color-mode"],
+  modules: [
+    "@nuxt/eslint",
+    "@nuxtjs/i18n",
+    "@nuxtjs/color-mode",
+    "@nuxtjs/google-fonts",
+  ],
   devtools: { enabled: true },
   css: ["~/tailwind.css"],
+  colorMode: {
+    preference: "system",
+    fallback: "light",
+    classSuffix: "",
+    classPrefix: "",
+  },
   compatibilityDate: "2024-11-01",
   vite: {
     plugins: [
@@ -32,10 +43,12 @@ export default defineNuxtConfig({
       },
     ],
   },
-  colorMode: {
-    preference: "system",
-    fallback: "light",
-    classSuffix: "",
-    classPrefix: "",
+  googleFonts: {
+    families: {
+      Lexend: {
+        ital: "100..900",
+        wght: "100..900",
+      },
+    },
   },
 });
