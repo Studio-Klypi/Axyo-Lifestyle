@@ -32,6 +32,9 @@ export default defineNuxtConfig({
         email: "",
       },
     },
+    admin: {
+      key: "",
+    },
   },
   compatibilityDate: "2024-11-01",
   vite: {

@@ -7,3 +7,8 @@ export interface IAuthSession {
   expiresAt: Date;
   revokedAt?: TNullable<Date>;
 }
+
+export interface IBackAuthSessionCookies {
+  token: string;
+  uuid: string;
+}
