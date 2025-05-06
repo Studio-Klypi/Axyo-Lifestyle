@@ -13,6 +13,9 @@
       "facebook": "Facebook"
     }
   },
+  "toasters": {
+    "server-error": "An error occurred on the server side."
+  },
   "login": {
     "title": "Welcome back",
     "caption": "Enter your email below to login to your account",
@@ -25,6 +28,7 @@
       "no-account": "Don't have an account?"
     },
     "toasters": {
+      "login-successfully": "Happy to see you back {username}!",
       "invalid-credentials": "Credentials are invalid!"
     }
   },
@@ -41,8 +45,8 @@
       "got-account": "Already have an account?"
     },
     "toasters": {
-      "invalid-credentials": "Credentials are invalid!",
-      "username-already-taken": "\"{username}\" is already taken!"
+      "account-created": "Hey {username}, Welcome on {appName}!",
+      "invalid-credentials": "Credentials are invalid!"
     }
   }
 }

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Facebook } from "lucide-vue-next";
+import { Facebook, LoaderCircle } from "lucide-vue-next";
 import { toTypedSchema } from "@vee-validate/zod";
 import * as z from "zod";
 import { useForm } from "vee-validate";
@@ -14,6 +14,9 @@ definePageMeta({
   },
 });
 
+const store = useUserStore();
+const { loading } = storeToRefs(store);
+
 const schema = toTypedSchema(z.object({
   username: z.string().regex(UsernameRegex),
   email: z.string().email(),
@@ -22,7 +25,9 @@ const schema = toTypedSchema(z.object({
 const form = useForm({
   validationSchema: schema,
 });
-const submit = form.handleSubmit(async values => console.log(values));
+const submit = form.handleSubmit(async (values) => {
+  await store.register(values);
+});
 </script>
 
 <template>
@@ -48,7 +53,10 @@ const submit = form.handleSubmit(async values => console.log(values));
           <FormItem>
             <FormLabel>{{ $t("register.form.username") }}</FormLabel>
             <FormControl v-bind="componentField">
-              <Input placeholder="john.doe" />
+              <Input
+                placeholder="john.doe"
+                :disabled="loading.register"
+              />
             </FormControl>
           </FormItem>
         </FormField>
@@ -62,6 +70,7 @@ const submit = form.handleSubmit(async values => console.log(values));
               <Input
                 type="email"
                 placeholder="m@example.com"
+                :disabled="loading.register"
               />
             </FormControl>
           </FormItem>
@@ -69,6 +78,7 @@ const submit = form.handleSubmit(async values => console.log(values));
         <FormField
           v-slot="{ componentField }"
           name="password"
+          :disabled="loading.register"
         >
           <FormItem>
             <FormLabel>{{ $t("register.form.password") }}</FormLabel>
@@ -81,7 +91,12 @@ const submit = form.handleSubmit(async values => console.log(values));
         <Button
           type="submit"
           class="w-full"
+          :disabled="loading.register"
         >
+          <LoaderCircle
+            v-if="loading.register"
+            class="animate-spin"
+          />
           {{ $t("register.form.register-btn") }}
         </Button>
         <div class="relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t after:border-border">
@@ -92,6 +107,7 @@ const submit = form.handleSubmit(async values => console.log(values));
         <Button
           type="button"
           variant="outline"
+          :disabled="true || loading.register"
         >
           <Facebook />
           {{ $t("register.form.register-with", { provider: $t("labels.providers.facebook") }) }}

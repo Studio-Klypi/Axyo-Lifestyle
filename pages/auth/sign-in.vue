@@ -14,6 +14,9 @@ definePageMeta({
   },
 });
 
+const store = useUserStore();
+const { loading } = storeToRefs(store);
+
 const schema = toTypedSchema(z.object({
   email: z.string().email(),
   password: z.string().regex(PasswordRegex),
@@ -21,7 +24,9 @@ const schema = toTypedSchema(z.object({
 const form = useForm({
   validationSchema: schema,
 });
-const submit = form.handleSubmit(async values => console.log(values));
+const submit = form.handleSubmit(async (values) => {
+  await store.login(values);
+});
 </script>
 
 <template>
@@ -50,6 +55,7 @@ const submit = form.handleSubmit(async values => console.log(values));
               <Input
                 type="email"
                 placeholder="m@example.com"
+                :disabled="loading.login"
               />
             </FormControl>
           </FormItem>
@@ -63,13 +69,17 @@ const submit = form.handleSubmit(async values => console.log(values));
               <FormLabel>{{ $t("login.form.password") }}</FormLabel>
               <NuxtLinkLocale
                 to="/auth/login"
+                tabindex="1"
                 class="ml-auto text-sm underline-offset-4 hover:underline"
               >
                 {{ $t("login.form.forgot-password") }}
               </NuxtLinkLocale>
             </div>
             <FormControl v-bind="componentField">
-              <Input type="password" />
+              <Input
+                type="password"
+                :disabled="loading.login"
+              />
             </FormControl>
           </FormItem>
         </FormField>
@@ -77,6 +87,7 @@ const submit = form.handleSubmit(async values => console.log(values));
         <Button
           type="submit"
           class="w-full"
+          :disabled="loading.login"
         >
           {{ $t("login.form.login-btn") }}
         </Button>
@@ -88,6 +99,7 @@ const submit = form.handleSubmit(async values => console.log(values));
         <Button
           type="button"
           variant="outline"
+          :disabled="true || loading.login"
         >
           <Facebook />
           {{ $t("login.form.login-with", { provider: $t("labels.providers.facebook") }) }}
