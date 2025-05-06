@@ -51,9 +51,9 @@ export default defineNuxtConfig({
   },
   googleFonts: {
     families: {
-      Lexend: {
-        ital: "100..900",
-        wght: "100..900",
+      Poppins: {
+        ital: [100, 200, 300, 400, 500, 600, 700, 800, 900],
+        wght: [100, 200, 300, 400, 500, 600, 700, 800, 900],
       },
     },
   },
