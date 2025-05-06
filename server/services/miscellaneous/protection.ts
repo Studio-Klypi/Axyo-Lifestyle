@@ -4,6 +4,8 @@ import type { IBackAuthSessionCookies } from "~/types/authentication/sessions";
 import type { Exception } from "~/types/miscellaneous/exceptions";
 import { NotEnoughPermissionsException, NotLoggedInException } from "~/types/miscellaneous/exceptions";
 import { handleException } from "~/server/services/miscellaneous/errors";
+import * as users from "~/server/database/repositories/authentication/users";
+import * as sessions from "~/server/database/repositories/authentication/sessions";
 
 const cookiesOptions: CookieSerializeOptions = {
   path: "/",
@@ -35,16 +37,14 @@ export function clearCookies(event: HttpRequest) {
 export async function protect(event: HttpRequest, callback: (req: HttpRequest) => Promise<unknown>, admin: boolean = false) {
   try {
     if (admin) {
-      const key = event.headers.get("AdminKey");
+      const key = event.headers.get("AdminKey-key");
       if (!key) return handleException(event, new NotEnoughPermissionsException("Missing API key."));
       if (key !== useRuntimeConfig().admin.key) return handleException(event, new NotEnoughPermissionsException("Invalid API key."));
       return callback(event);
     }
 
-    const { token, uuid } = getCookies(event);
-    console.log(token, uuid);
-
-    event.context.user = null; // TODO: fetch user
+    const session = await sessions.get(getCookies(event));
+    event.context.user = await users.get(session.userUuid);
 
     return callback(event);
   }

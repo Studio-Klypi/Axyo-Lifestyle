@@ -18,3 +18,8 @@ export interface IBackUser {
   updatedAt: Date;
 }
 export type IUser = Omit<IBackUser, "password">;
+
+export type IReducedUser = Omit<IBackUser, "avatar">;
+
+export type ICreateUser = Omit<IReducedUser, "uuid" | "subscriptionPlan" | "createdAt" | "updatedAt">;
+export type IUpdateUser = Partial<Omit<IReducedUser, "uuid" | "createdAt" | "updatedAt">>;
