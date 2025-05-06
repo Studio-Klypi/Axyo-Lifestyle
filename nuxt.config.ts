@@ -10,6 +10,7 @@ export default defineNuxtConfig({
     "shadcn-nuxt",
     "nuxt-mailer",
     "nuxt-scheduler",
+    "@pinia/nuxt",
   ],
   devtools: { enabled: true },
   css: ["~/tailwind.css"],
@@ -65,6 +66,9 @@ export default defineNuxtConfig({
         file: "en.json",
       },
     ],
+  },
+  pinia: {
+    storesDirs: ["./stores/**"],
   },
   shadcn: {
     prefix: "",
