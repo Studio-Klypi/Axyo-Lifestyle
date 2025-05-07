@@ -6,6 +6,8 @@ import * as users from "~/server/database/repositories/authentication/users";
 import * as sessions from "~/server/database/repositories/authentication/sessions";
 import type { ICreateUser } from "~/types/authentication/users";
 import { setCookies } from "~/server/services/miscellaneous/protection";
+import { sendEmail } from "~/server/services/miscellaneous/emails";
+import AccountCreated from "~/server/emails/templates/authentication/AccountCreated.vue";
 
 export async function createAccount(event: HttpRequest) {
   const body = await readBody<ICreateUser>(event);
@@ -19,7 +21,15 @@ export async function createAccount(event: HttpRequest) {
       token: session.token,
     });
 
-    // TODO: send welcome email
+    sendEmail({
+      to: user.email,
+      subject: "Welcome to Axyo ✨",
+    }, {
+      component: AccountCreated,
+      props: {
+        username: user.username,
+      },
+    }).catch();
 
     event.node.res.statusCode = EStatusCode.Created;
     return user;
