@@ -15,6 +15,20 @@ export default defineNuxtConfig({
     "@nuxt/image",
   ],
   devtools: { enabled: true },
+  app: {
+    head: {
+      htmlAttrs: {
+        lang: "fr",
+      },
+      link: [
+        {
+          rel: "icon",
+          type: "image/png",
+          href: "/favicon.png",
+        },
+      ],
+    },
+  },
   css: ["~/tailwind.css"],
   colorMode: {
     preference: "system",

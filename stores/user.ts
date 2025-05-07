@@ -22,7 +22,6 @@ export const useUserStore = defineStore("user", {
     async recover() {
       const { data } = await useFetch<IUser>("/api/auth/me");
       if (!data.value) return;
-      console.log(data.value);
       this.user = data.value;
     },
     async register(data: {
