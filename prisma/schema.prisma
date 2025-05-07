@@ -6,3 +6,53 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+// File
+model File {
+  sum       String   @id
+  filename  String
+  format    String
+  large     String
+  thumbnail String
+  createdAt DateTime @default(now())
+
+  users User[]
+
+  @@map("files")
+}
+
+// Authentication
+enum SubscriptionPlan {
+  STANDARD
+  PREMIUM
+}
+
+model User {
+  uuid             String           @id @default(uuid())
+  username         String           @unique
+  email            String           @unique
+  password         String
+  avatarRef        String?
+  subscriptionPlan SubscriptionPlan @default(STANDARD)
+  createdAt        DateTime         @default(now())
+  updatedAt        DateTime         @updatedAt
+
+  avatar File? @relation(fields: [avatarRef], references: [sum], onDelete: SetNull)
+
+  authSessions AuthSession[]
+
+  @@map("users")
+}
+
+model AuthSession {
+  userUuid  String
+  token     String    @default(uuid())
+  createdAt DateTime  @default(now())
+  expiresAt DateTime
+  revokedAt DateTime?
+
+  user User @relation(fields: [userUuid], references: [uuid], onDelete: Cascade)
+
+  @@id([userUuid, token])
+  @@map("auth_sessions")
+}

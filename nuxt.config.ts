@@ -1,5 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import tailwindcss from "@tailwindcss/vite";
+import vue from "@vitejs/plugin-vue";
 
 export default defineNuxtConfig({
   modules: [
@@ -11,8 +12,23 @@ export default defineNuxtConfig({
     "nuxt-mailer",
     "nuxt-scheduler",
     "@pinia/nuxt",
+    "@nuxt/image",
   ],
   devtools: { enabled: true },
+  app: {
+    head: {
+      htmlAttrs: {
+        lang: "fr",
+      },
+      link: [
+        {
+          rel: "icon",
+          type: "image/png",
+          href: "/favicon.png",
+        },
+      ],
+    },
+  },
   css: ["~/tailwind.css"],
   colorMode: {
     preference: "system",
@@ -31,8 +47,23 @@ export default defineNuxtConfig({
         email: "",
       },
     },
+    admin: {
+      key: "",
+    },
+    public: {
+      assistant: {
+        name: "",
+      },
+    },
   },
   compatibilityDate: "2024-11-01",
+  nitro: {
+    rollupConfig: {
+      plugins: [
+        vue(),
+      ],
+    },
+  },
   vite: {
     plugins: [
       tailwindcss(),
@@ -50,9 +81,9 @@ export default defineNuxtConfig({
   },
   googleFonts: {
     families: {
-      Lexend: {
-        ital: "100..900",
-        wght: "100..900",
+      Poppins: {
+        ital: [100, 200, 300, 400, 500, 600, 700, 800, 900],
+        wght: [100, 200, 300, 400, 500, 600, 700, 800, 900],
       },
     },
   },

@@ -1,0 +1,30 @@
+TableGroup Authentication {
+  User
+  AuthSession
+}
+
+Enum SubscriptionPlan {
+  STANDARD
+  PREMIUM
+}
+
+Table User {
+  uuid uuid pk
+  username string unique
+  email string unique
+  password string
+  avatarRef string [null, ref: > File.sum]
+
+  subscriptionPlan SubscriptionPlan [default: "STANDARD"]
+
+  createdAt datetime
+  updatedAt datetime
+}
+Table AuthSession {
+  userUuid uuid pk [ref: > User.uuid]
+  token uuid pk
+
+  revokedAt datetime [null]
+  createdAt datetime
+  expiresAt datetime
+}
