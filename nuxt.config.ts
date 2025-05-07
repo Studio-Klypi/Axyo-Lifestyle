@@ -1,5 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import tailwindcss from "@tailwindcss/vite";
+import vue from "@vitejs/plugin-vue";
 
 export default defineNuxtConfig({
   modules: [
@@ -35,8 +36,20 @@ export default defineNuxtConfig({
     admin: {
       key: "",
     },
+    public: {
+      assistant: {
+        name: "",
+      },
+    },
   },
   compatibilityDate: "2024-11-01",
+  nitro: {
+    rollupConfig: {
+      plugins: [
+        vue(),
+      ],
+    },
+  },
   vite: {
     plugins: [
       tailwindcss(),
