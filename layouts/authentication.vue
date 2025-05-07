@@ -14,7 +14,7 @@ import { Panda } from "~/components/shared/icons";
           to="/"
           class="flex items-center gap-2 font-medium"
         >
-          <span class="grid place-items-center size-8 rounded-md bg-primary text-primary-foreground">
+          <span class="grid place-items-center size-8 rounded-md bg-stone-950 dark:bg-stone-50 text-stone-50 dark:text-stone-950">
             <Panda class="size-4" />
           </span>
           {{ $t("app.name") }}
@@ -31,6 +31,7 @@ import { Panda } from "~/components/shared/icons";
       <NuxtImg
         src="/images/placeholder.webp"
         alt=""
+        :placeholder="[25, 25, 75, 50]"
         class="absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
       />
     </div>
