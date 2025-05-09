@@ -1,0 +1,18 @@
+TableGroup QuickTasks [color: #1E69FD] {
+  QuickCollection
+  QuickTask
+}
+
+Table QuickCollection {
+  id int pk
+  userUuid uuid [ref: > User.uuid]
+  name string
+}
+Table QuickTask {
+  id int pk
+  userUuid uuid [ref: > User.uuid]
+  collectionId int [null, ref: > QuickCollection.id]
+  label string
+  createdAt datetime
+  completedAt datetime [null]
+}
