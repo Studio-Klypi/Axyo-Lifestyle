@@ -39,7 +39,9 @@ model User {
 
   avatar File? @relation(fields: [avatarRef], references: [sum], onDelete: SetNull)
 
-  authSessions AuthSession[]
+  authSessions         AuthSession[]
+  quickTaskCollections QuickTaskCollection[]
+  quickTasks           QuickTask[]
 
   @@map("users")
 }
@@ -55,4 +57,29 @@ model AuthSession {
 
   @@id([userUuid, token])
   @@map("auth_sessions")
+}
+
+model QuickTaskCollection {
+  id       Int    @id @default(autoincrement())
+  userUuid String
+  name     String
+
+  user  User        @relation(fields: [userUuid], references: [uuid], onDelete: Cascade)
+  tasks QuickTask[]
+
+  @@map("quick_task_collections")
+}
+
+model QuickTask {
+  id           Int       @id @default(autoincrement())
+  userUuid     String
+  collectionId Int?
+  label        String
+  createdAt    DateTime  @default(now())
+  completedAt  DateTime?
+
+  user       User                 @relation(fields: [userUuid], references: [uuid], onDelete: Cascade)
+  collection QuickTaskCollection? @relation(fields: [collectionId], references: [id], onDelete: SetNull)
+
+  @@map("quick_tasks")
 }
