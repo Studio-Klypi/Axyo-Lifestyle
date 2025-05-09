@@ -2,6 +2,7 @@
 import Page from "~/components/shared/composition/Page.vue";
 
 definePageMeta({
+  layout: "showcase",
   auth: {
     mode: "lax",
   },
