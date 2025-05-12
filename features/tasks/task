@@ -1,0 +1,17 @@
+Une tache c'est :
+- Un nom
+- Une description
+- Une priorité
+- Des "tags"
+- Une estimation temporelle
+- Un statut : TODO, IN_PROGRESS, DONE
+- Une deadline (en option)
+- Un timer focus (au besoin) -> empeche de quitter la page si lancé
+
+C'est également plusieurs vues :
+- Aujourd'hui
+- Dans la semaine
+- Dans le mois
+-> triées par priorité décroissante
+
+Ce sera, dans le futur, ajouté au calendrier interactif intégré à la plateforme

@@ -1,6 +1,11 @@
 import type { IFile } from "~/types/miscellaneous/files";
 import type { TNullable } from "~/types/miscellaneous/generics";
 
+export interface IUserIdPair {
+  id: number;
+  userUuid: string;
+}
+
 export const SubscriptionPlans = ["STANDARD", "PREMIUM"] as const;
 export type ESubscriptionPlan = typeof SubscriptionPlans[number];
 

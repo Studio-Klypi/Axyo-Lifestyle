@@ -1,0 +1,45 @@
+TableGroup RichTasks [color: #4B82B0] {
+  TaskCategory
+  TaskTags
+  Task
+}
+
+Enum TaskPriority {
+  URGENT
+  HIGH
+  MEDIUM
+  LOW
+  NONE
+}
+Enum TaskState {
+  TODO
+  IN_PROGRESS
+  DONE
+}
+
+Table TaskCategory {
+  id int pk
+  userUuid uuid unique [ref: > User.uuid] // unique pair [userUuid,name]
+  name string unique
+}
+Table TaskTags {
+  taskId int [ref: > Task.id]
+  taskCategoryId int [ref: > TaskCategory.id]
+}
+Table Task {
+  id int pk
+  userUuid uuid [ref: > User.uuid]
+
+  name string
+  description string
+  estimatedDuration int
+
+  priority TaskPriority [default: "NONE"]
+  state TaskState [default: "TODO"]
+
+  focusedTime long [default: 0]
+  deadline datetime [null]
+
+  createdAt datetime
+  completedAt datetime [null]
+}
