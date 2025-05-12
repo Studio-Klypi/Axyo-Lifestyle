@@ -5,12 +5,43 @@
   },
   "btn": {
     "sign-in": "Sign in",
-    "sign-up": "Sign up"
+    "sign-up": "Sign up",
+    "log-out": "Log out",
+    "archived": "Archived"
+  },
+  "context": {
+    "user-menu": {
+      "settings": "Settings",
+      "theme": "Theme",
+      "language": "Language"
+    },
+    "get-help": {
+      "help-center": "Help Center"
+    }
   },
   "labels": {
     "continue-with": "Or continue with",
     "providers": {
       "facebook": "Facebook"
+    },
+    "go-to-premium": {
+      "title": "Loving it?",
+      "caption": "Some features are disabled with your current plan. Change to premium to enable them.",
+      "button": "Go to Premium"
+    },
+    "themes": {
+      "system": "System",
+      "light": "Light",
+      "dark": "Dark"
+    }
+  },
+  "navigation": {
+    "default": {
+      "overview": "Overview"
+    },
+    "productivity": {
+      "title": "Productivity",
+      "quick-tasks": "Quick tasks"
     }
   },
   "toasters": {
@@ -47,6 +78,41 @@
     "toasters": {
       "account-created": "Hey {username}, Welcome on {appName}!",
       "invalid-credentials": "Credentials are invalid!"
+    }
+  },
+  "quick-tasks": {
+    "title": "Quick Tasks",
+    "action": "New quick task",
+    "sections": {
+      "today": "Today",
+      "yesterday": "Yesterday",
+      "this-week": "This Week",
+      "this-month": "This Month",
+      "older": "Older"
+    },
+    "dialog": {
+      "new": {
+        "title": "New quick task",
+        "action": "Add to list"
+      },
+      "edit": {
+        "title": "Edit quick task",
+        "action": "Confirm update"
+      },
+      "field": {
+        "label": "Label",
+        "placeholder": "Wash the dishes"
+      }
+    },
+    "toasters": {
+      "task-created": "\"{label}\" added to your list.",
+      "task-updated": "Task label changed."
+    },
+    "empty": {
+      "title": "All quiet on the quick task front",
+      "caption": "Either you're on top of everything... or you've forgotten something.",
+      "cta": "Add a quick task before it escapes your brain for good.",
+      "action": "Add a quick task"
     }
   }
 }
