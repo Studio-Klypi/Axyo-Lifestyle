@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { HelpCircle } from "lucide-vue-next";
 import Layout from "~/components/shared/composition/Layout.vue";
 import AppSidebar from "~/components/shared/navigation/AppSidebar.vue";
 import UserDropdown from "~/components/shared/user/UserDropdown.vue";
