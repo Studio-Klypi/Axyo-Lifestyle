@@ -61,39 +61,122 @@ export const useQuickTasksStore = defineStore("quick-tasks", {
   },
   actions: {
     async recover() {
+      const t = this.getTranslator;
       this.loading.recovering = true;
 
-      setTimeout(() => {
+      try {
+        const { data } = await useFetch<IQuickTask[]>("/api/productivity/quick-task");
+        if (!data.value) return;
+        this.tasks = data.value;
+      }
+      catch {
+        toast.error(t("toasters.server-error"));
+      }
+      finally {
         this.loading.recovering = false;
-      }, Math.floor(Math.random() * 500) + 1000);
+      }
     },
     async addTask(label: string) {
       const t = this.getTranslator;
+      this.loading.creating = true;
 
-      this.tasks = [
-        ...this.tasks,
-        {
-          id: this.tasks.length + 1,
-          userUuid: "me",
+      try {
+        const task = await $fetch<IQuickTask>("/api/productivity/quick-task", {
+          method: "POST",
+          body: {
+            label,
+          },
+        });
+        this.tasks = [...this.tasks, task];
+        toast.success(t("quick-tasks.toasters.task-created", {
           label,
-          createdAt: new Date(),
-        },
-      ];
-      toast.success(t("quick-tasks.toasters.task-created", {
-        label,
-      }));
+        }));
+      }
+      catch {
+        toast.error(t("toasters.server-error"));
+      }
+      finally {
+        this.loading.creating = false;
+      }
     },
     async updateTask(id: number, label: string) {
       const t = this.getTranslator;
+      this.loading.creating = true;
 
-      this.tasks = this.tasks.map(task => task.id === id ? { ...task, label } : task);
-      toast.success(t("quick-tasks.toasters.task-updated"));
+      try {
+        const task = await $fetch<IQuickTask>(`/api/productivity/quick-task/${id}`, {
+          method: "PUT",
+          body: {
+            label,
+          },
+        });
+        this.tasks = this.tasks.map(t => t.id === id ? task : t);
+        toast.success(t("quick-tasks.toasters.task-updated"));
+      }
+      catch {
+        toast.error(t("toasters.server-error"));
+      }
+      finally {
+        this.loading.creating = false;
+      }
     },
     async toggleTask(id: number) {
-      this.tasks = this.tasks.map(task => task.id === id ? { ...task, completedAt: task.completedAt ? null : new Date() } : task);
+      const t = this.getTranslator;
+      const relatedTask = this.tasks.find(t => t.id === id);
+      if (!relatedTask) return;
+
+      try {
+        const task = await $fetch<IQuickTask>(`/api/productivity/quick-task/${id}`, {
+          method: "PUT",
+          body: {
+            completedAt: relatedTask.completedAt ? null : new Date(),
+          },
+        });
+        this.tasks = this.tasks.map(t => t.id === id ? task : t);
+      }
+      catch {
+        toast.error(t("toasters.server-error"));
+      }
     },
     async deleteTask(id: number) {
-      this.tasks = this.tasks.filter(task => task.id !== id);
+      const t = this.getTranslator;
+
+      try {
+        const task = await $fetch<IQuickTask>(`/api/productivity/quick-task/${id}`, {
+          method: "DELETE",
+        });
+        this.tasks = this.tasks.filter(task => task.id !== id);
+        toast.success(t("quick-tasks.toasters.task-deleted", {
+          label: task.label,
+        }), {
+          action: {
+            label: t("btn.undo"),
+            onClick: () => this.rollbackTask(task),
+          },
+        });
+      }
+      catch {
+        toast.error(t("toasters.server-error"));
+      }
+    },
+    async rollbackTask(old: IQuickTask) {
+      const t = this.getTranslator;
+
+      try {
+        const task = await $fetch<IQuickTask>(`/api/productivity/quick-task/${old.id}`, {
+          method: "POST",
+          body: {
+            ...old,
+          },
+        });
+        this.tasks = [...this.tasks, task];
+        toast.success(t("quick-tasks.toasters.task-recovered", {
+          label: task.label,
+        }));
+      }
+      catch {
+        toast.error(t("toasters.server-error"));
+      }
     },
   },
 });

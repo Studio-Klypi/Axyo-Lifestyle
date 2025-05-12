@@ -29,6 +29,11 @@ export class NotFoundException extends Exception {
     super(EStatusCode.NotFound, message ?? "Entity not found.");
   }
 }
+export class UnprocessableEntityException extends Exception {
+  constructor(message?: string) {
+    super(EStatusCode.UnprocessableEntity, message ?? "Unprocessable entity.");
+  }
+}
 export class UniqueConstraintViolationException extends Exception {
   constructor(message?: string) {
     super(EStatusCode.Conflict, message ?? "Unique constraint violation.");

@@ -7,7 +7,8 @@
     "sign-in": "Sign in",
     "sign-up": "Sign up",
     "log-out": "Log out",
-    "archived": "Archived"
+    "archived": "Archived",
+    "undo": "Undo"
   },
   "context": {
     "user-menu": {
@@ -106,7 +107,9 @@
     },
     "toasters": {
       "task-created": "\"{label}\" added to your list.",
-      "task-updated": "Task label changed."
+      "task-updated": "Task label changed.",
+      "task-deleted": "\"{label}\" remove from your list.",
+      "task-recovered": "\"{label}\" recovered and added back to your list."
     },
     "empty": {
       "title": "All quiet on the quick task front",
