@@ -5,6 +5,7 @@ import type { IQuickTask } from "~/types/productivity/quick-tasks";
 export const useQuickTasksStore = defineStore("quick-tasks", {
   state: (): QuickTasksState => ({
     tasks: [],
+    search: "",
     loading: {
       creating: false,
       deleting: false,
@@ -30,7 +31,8 @@ export const useQuickTasksStore = defineStore("quick-tasks", {
 
       const thisMonthStart = new Date(today.getFullYear(), today.getMonth(), 1);
 
-      return state.tasks.reduce((acc, task) => {
+      const filtered = state.tasks.filter(task => task.label.replaceAll(" ", "").toLowerCase().includes(state.search.toLowerCase().replaceAll(" ", "")));
+      return (state.search?.trim().length >= 3 ? filtered : state.tasks).reduce((acc, task) => {
         const taskDate = new Date(task.createdAt);
         taskDate.setHours(0, 0, 0, 0);
 

@@ -15,7 +15,7 @@ definePageMeta({
 const { isMobile } = useResponsiveData();
 
 const store = useQuickTasksStore();
-const { tasks, loading } = storeToRefs(store);
+const { tasks, search, loading } = storeToRefs(store);
 const groupedByPeriod = computed(() => store.groupedByPeriod);
 
 store.recover();
@@ -29,6 +29,7 @@ store.recover();
     <header class="shrink-0 flex items-center gap-2">
       <div class="relative flex-1">
         <Input
+          v-model="search"
           class="pl-9"
           placeholder="Absolute"
         />

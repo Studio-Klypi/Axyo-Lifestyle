@@ -12,6 +12,7 @@ export interface UserState {
 
 export interface QuickTasksState {
   tasks: IQuickTask[];
+  search: string;
   loading: {
     creating: boolean;
     deleting: boolean;
