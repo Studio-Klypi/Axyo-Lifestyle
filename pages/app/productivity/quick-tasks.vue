@@ -3,6 +3,7 @@ import { Search, Plus } from "lucide-vue-next";
 import Page from "~/components/shared/composition/Page.vue";
 import QuickTaskSection from "~/components/shared/productivity/quick-tasks/QuickTaskSection.vue";
 import QuickTaskDialog from "~/components/shared/productivity/quick-tasks/QuickTaskDialog.vue";
+import EmptyStatement from "~/components/shared/empty/EmptyStatement.vue";
 
 definePageMeta({
   auth: {
@@ -30,7 +31,7 @@ store.recover();
       <div class="relative flex-1">
         <Input
           v-model="search"
-          class="pl-9"
+          class="pl-8"
           placeholder="Absolute"
         />
         <Search class="size-4 absolute top-2.5 left-2.5 text-muted-foreground" />
@@ -95,23 +96,17 @@ store.recover();
           {{ $t("quick-tasks.sections.older") }}
         </QuickTaskSection>
       </template>
-      <template v-else>
-        <div class="py-8 flex flex-col items-center justify-center gap-1">
-          <h2 class="text-lg font-medium">
-            {{ $t("quick-tasks.empty.title") }}
-          </h2>
-          <p class="text-center text-sm text-muted-foreground">
-            {{ $t("quick-tasks.empty.caption") }}<br>
-            {{ $t("quick-tasks.empty.cta") }}
-          </p>
-          <QuickTaskDialog>
-            <Button class="mt-4">
-              <Plus />
-              {{ $t("quick-tasks.empty.action") }}
-            </Button>
-          </QuickTaskDialog>
-        </div>
-      </template>
+      <EmptyStatement
+        v-else
+        path-root="quick-tasks.empty"
+      >
+        <QuickTaskDialog>
+          <Button>
+            <Plus />
+            {{ $t("quick-tasks.empty.action") }}
+          </Button>
+        </QuickTaskDialog>
+      </EmptyStatement>
     </main>
   </Page>
 </template>

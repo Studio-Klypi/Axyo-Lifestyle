@@ -1,0 +1,44 @@
+TableGroup HomeCinema [color: #126E7A] {
+  MediaEntity
+  Watchlist
+  MediaStatus
+}
+
+Enum MediaType {
+  MOVIE
+  TV_SERIES
+}
+Enum MediaNotation {
+  BAD
+  GOOD
+  VERY_GOOD
+}
+
+Table MediaEntity {
+  id int pk
+  mediaType MediaType
+
+  title string
+  synopsis string
+  posterRef string [null, ref: > File.sum]
+  year int
+  genders string
+  actors string
+  duration int
+
+  createdAt datetime
+}
+Table Watchlist {
+  userUuid uuid pk [ref: > User.uuid]
+  mediaId int pk [ref: > MediaEntity.id]
+  createdAt datetime
+}
+Table MediaStatus {
+  userUuid uuid pk [ref: > User.uuid]
+  mediaId int pk [ref: > MediaEntity.id]
+
+  note MediaNotation [null]
+  viewedAt datetime [null]
+
+  createdAt datetime
+}

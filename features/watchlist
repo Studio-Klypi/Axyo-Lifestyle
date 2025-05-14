@@ -1,0 +1,24 @@
+L'utilisateur doit pouvoir rechercher un film ou une série, le rechercher dans la base de données et pouvoir l'ajouter dans sa watchlist.
+Que ce soit un film ou une série TV, ça doit être possible et différenciable.
+
+Pour ça, il faut créer une liste de films en interne pour éviter les coûts liés à TMDb (The Movie Database).
+
+Données qu'il faut pour les films / séries :
+- Titre (en différentes langues)
+- Synopsis (en différentes langues)
+- Les images (posters, backdrop, etc...)
+- L'année de sortie
+- Le/Les genres
+- Le/Les acteurs
+- Le média (tv, movie)
+- La durée (en h/m pour un film, en saisons pour une série)
+
+Pour la watchlist, il faut enregistrer :
+- La relation avec le média
+- Le statut (non vu, vu)
+- La notation (bad, good, very good)
+
+Pour l'interface, il faut que l'utilisateur soit en capacité de scroll (de manière infinie) dans la page pour charger la suite des informations (20 médias par 20 médias)
+Il faut également que l'utilisateur puisse filter par type (tv, movie), par genre (action, horreur, etc...), et ordonner par :
+- date (asc, desc)
+- nom (asc, desc)

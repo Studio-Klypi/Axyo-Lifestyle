@@ -16,7 +16,8 @@ model File {
   thumbnail String
   createdAt DateTime @default(now())
 
-  users User[]
+  users  User[]
+  medias MediaEntity[]
 
   @@map("files")
 }
@@ -41,6 +42,8 @@ model User {
 
   authSessions AuthSession[]
   quickTasks   QuickTask[]
+  watchlist    Watchlist[]
+  mediaStatus  MediaStatus[]
 
   @@map("users")
 }
@@ -69,4 +72,62 @@ model QuickTask {
   user User @relation(fields: [userUuid], references: [uuid], onDelete: Cascade)
 
   @@map("quick_tasks")
+}
+
+// Home Cinema
+enum MediaType {
+  MOVIE
+  TV_SERIES
+}
+
+enum MediaNotation {
+  BAD
+  GOOD
+  VERY_GOOD
+}
+
+model MediaEntity {
+  id        Int       @id @default(autoincrement())
+  type      MediaType
+  title     String
+  synopsis  String
+  posterRef String?
+  year      Int
+  genders   String[]
+  actors    String[]
+  duration  Int
+  createdAt DateTime  @default(now())
+
+  poster File? @relation(fields: [posterRef], references: [sum], onDelete: SetNull)
+
+  savedBy Watchlist[]
+  status  MediaStatus[]
+
+  @@map("media_entities")
+}
+
+model Watchlist {
+  userUuid  String
+  mediaId   Int
+  createdAt DateTime @default(now())
+
+  user  User        @relation(fields: [userUuid], references: [uuid], onDelete: Cascade)
+  media MediaEntity @relation(fields: [mediaId], references: [id], onDelete: Cascade)
+
+  @@id([userUuid, mediaId])
+  @@map("watchlist_relations")
+}
+
+model MediaStatus {
+  userUuid  String
+  mediaId   Int
+  note      MediaNotation?
+  viewedAt  DateTime?
+  createdAt DateTime       @default(now())
+
+  user  User        @relation(fields: [userUuid], references: [uuid], onDelete: Cascade)
+  media MediaEntity @relation(fields: [mediaId], references: [id], onDelete: Cascade)
+
+  @@id([userUuid, mediaId])
+  @@map("media_status")
 }

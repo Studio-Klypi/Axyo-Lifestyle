@@ -1,3 +1,5 @@
+import type { IUser } from "~/types/authentication/users";
+
 export default defineNuxtRouteMiddleware(async () => {
   const store = useUserStore();
 
@@ -10,4 +12,10 @@ export default defineNuxtRouteMiddleware(async () => {
   if (user.value) return;
 
   await store.recover();
+
+  if (!user.value) return;
+
+  const hcStore = useHomeCinemaStore();
+  hcStore.storeWatchlist((user.value as IUser).watchlist ?? []);
+  hcStore.storeStatus((user.value as IUser).mediaStatus ?? []);
 });

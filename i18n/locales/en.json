@@ -8,7 +8,8 @@
     "sign-up": "Sign up",
     "log-out": "Log out",
     "archived": "Archived",
-    "undo": "Undo"
+    "undo": "Undo",
+    "see-details": "See Details"
   },
   "context": {
     "user-menu": {
@@ -21,6 +22,7 @@
     }
   },
   "labels": {
+    "new": "New",
     "continue-with": "Or continue with",
     "providers": {
       "facebook": "Facebook"
@@ -34,6 +36,14 @@
       "system": "System",
       "light": "Light",
       "dark": "Dark"
+    },
+    "home-cinema": {
+      "movie": "Movie",
+      "tv-series": "TV Series",
+      "duration": {
+        "hours": "{hours}h {minutes}m",
+        "seasons": "{value} seasons"
+      }
     }
   },
   "navigation": {
@@ -43,6 +53,11 @@
     "productivity": {
       "title": "Productivity",
       "quick-tasks": "Quick tasks"
+    },
+    "home-cinema": {
+      "title": "Home Cinema",
+      "database": "Database",
+      "watchlist": "Watchlist"
     }
   },
   "toasters": {
@@ -116,6 +131,48 @@
       "caption": "Either you're on top of everything... or you've forgotten something.",
       "cta": "Add a quick task before it escapes your brain for good.",
       "action": "Add a quick task"
+    }
+  },
+  "home-cinema": {
+    "toasters": {
+      "add-to-watchlist": {
+        "loading": "Adding {name} to your list...",
+        "success": "{name} has been added to your list.",
+        "error": "An error occurred while adding {name} to your list."
+      },
+      "remove-from-watchlist": {
+        "loading": "Removing {name} from your list...",
+        "success": "{name} has been removed from your list.",
+        "error": "An error occurred while removing {name} from your list."
+      },
+      "save-rating": {
+        "loading": "Saving your rating for {name}...",
+        "success": "Your rating has been saved for {name}.",
+        "error": "An error occurred while saving your rating for {name}."
+      }
+    },
+    "entity-card": {
+      "casting": "Casting",
+      "genders": "Genders",
+      "watched-it": "I watched it",
+      "mark-as-watched": "Mark as \"Watched\""
+    },
+    "database": {
+      "title": "Media Database",
+      "empty": {
+        "title": "Nothing to see here (yet)",
+        "caption": "The database curates itself-fancy, right?",
+        "cta": "Come back later to see what shows up."
+      }
+    },
+    "watchlist": {
+      "title": "My Watchlist",
+      "empty": {
+        "title": "Your watchlist is suspiciously empty",
+        "caption": "Planning to keep an eye on… absolutely nothing?",
+        "cta": "Add something before it becomes a ghost town in here.",
+        "action": "Explore our Database"
+      }
     }
   }
 }

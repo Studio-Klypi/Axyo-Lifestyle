@@ -46,6 +46,16 @@ export async function update(uuid: string, payload: IUpdateUser): Promise<IUser>
       data: payload,
       include: {
         avatar: true,
+        watchlist: {
+          include: {
+            media: {
+              include: {
+                poster: true,
+              },
+            },
+          },
+        },
+        mediaStatus: true,
       },
     });
     return reduce(user);
@@ -75,6 +85,16 @@ export async function get(uuid: string): Promise<IUser> {
     },
     include: {
       avatar: true,
+      watchlist: {
+        include: {
+          media: {
+            include: {
+              poster: true,
+            },
+          },
+        },
+      },
+      mediaStatus: true,
     },
   });
   if (!user) throw new NotFoundException();
@@ -114,6 +134,16 @@ export async function comparePassword(email: string, password: string): Promise<
     },
     include: {
       avatar: true,
+      watchlist: {
+        include: {
+          media: {
+            include: {
+              poster: true,
+            },
+          },
+        },
+      },
+      mediaStatus: true,
     },
   });
   if (!user) throw new NotFoundException("Invalid credentials.");
