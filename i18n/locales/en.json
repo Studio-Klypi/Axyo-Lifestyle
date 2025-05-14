@@ -22,6 +22,7 @@
     }
   },
   "labels": {
+    "new": "New",
     "continue-with": "Or continue with",
     "providers": {
       "facebook": "Facebook"

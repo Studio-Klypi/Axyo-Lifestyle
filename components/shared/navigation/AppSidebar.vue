@@ -33,11 +33,13 @@ const sidebarContent = [
         label: "navigation.home-cinema.database",
         icon: Film,
         url: "/app/home-cinema/database",
+        new: true,
       },
       {
         label: "navigation.home-cinema.watchlist",
         icon: Bookmark,
         url: "/app/home-cinema/watchlist",
+        new: true,
       },
     ],
   },

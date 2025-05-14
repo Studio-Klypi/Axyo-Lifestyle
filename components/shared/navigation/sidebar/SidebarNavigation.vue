@@ -8,6 +8,7 @@ interface NavGroup {
 interface NavGroupChild {
   label: string;
   icon?: LucideIcon;
+  new?: boolean;
   url: string;
 }
 
@@ -56,6 +57,13 @@ defineProps<{
                         v-if="childItem.icon"
                       />
                       {{ $t(childItem.label) }}
+
+                      <Badge
+                        v-if="childItem.new"
+                        class="ml-auto"
+                      >
+                        {{ $t("labels.new") }}
+                      </Badge>
                     </NuxtLinkLocale>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
@@ -82,6 +90,12 @@ defineProps<{
                     v-if="childItem.icon"
                   />
                   {{ $t(childItem.label) }}
+                  <Badge
+                    v-if="childItem.new"
+                    class="ml-auto"
+                  >
+                    {{ $t("labels.new") }}
+                  </Badge>
                 </NuxtLinkLocale>
               </SidebarMenuButton>
             </SidebarMenuItem>
