@@ -16,7 +16,7 @@ const displayName = computed(() => useRoute().meta.displayName || "app.name");
 
       <SidebarInset>
         <div class="w-full min-h-dvh flex flex-col">
-          <header class="h-12 flex items-center justify-between p-2.5 pl-4 border-b">
+          <header class="sticky top-0 z-10 bg-background h-12 flex items-center justify-between p-2.5 pl-4 border-b">
             <div class="flex items-center gap-2">
               <SidebarTrigger class="md:hidden" />
               <p class="font-medium">

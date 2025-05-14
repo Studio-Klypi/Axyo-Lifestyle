@@ -15,9 +15,9 @@ definePageMeta({
 <template>
   <Page
     name="database"
-    class="h-full flex flex-col gap-4"
+    class="h-full flex flex-col -mt-4"
   >
-    <header class="shrink-0 flex items-center gap-2">
+    <header class="py-4 sticky top-12 z-10 -mx-1 px-1 bg-background shrink-0 flex items-center gap-2">
       <div class="relative flex-1">
         <Input
           class="pl-8"
