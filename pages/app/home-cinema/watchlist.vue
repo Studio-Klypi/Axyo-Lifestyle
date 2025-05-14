@@ -91,7 +91,7 @@ const watchlist = computed(() => hcStore.userWatchlist);
     <main class="flex flex-col gap-6 flex-1">
       <div
         v-if="watchlist.length"
-        class="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))]"
+        class="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-4"
       >
         <MediaEntityCard
           v-for="el in watchlist"

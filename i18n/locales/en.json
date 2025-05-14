@@ -36,6 +36,10 @@
       "system": "System",
       "light": "Light",
       "dark": "Dark"
+    },
+    "home-cinema": {
+      "movie": "Movie",
+      "tv-series": "TV Series"
     }
   },
   "navigation": {
@@ -126,10 +130,27 @@
     }
   },
   "home-cinema": {
+    "toasters": {
+      "add-to-watchlist": {
+        "loading": "Adding {name} to your list...",
+        "success": "{name} has been added to your list.",
+        "error": "An error occurred while adding {name} to your list."
+      },
+      "remove-from-watchlist": {
+        "loading": "Removing {name} from your list...",
+        "success": "{name} has been removed from your list.",
+        "error": "An error occurred while removing {name} from your list."
+      },
+      "save-rating": {
+        "loading": "Saving your rating for {name}...",
+        "success": "Your rating has been saved for {name}.",
+        "error": "An error occurred while saving your rating for {name}."
+      }
+    },
     "entity-card": {
       "casting": "Casting",
       "genders": "Genders",
-      "watched-id": "I watched it",
+      "watched-it": "I watched it",
       "mark-as-watched": "Mark as \"Watched\""
     },
     "database": {

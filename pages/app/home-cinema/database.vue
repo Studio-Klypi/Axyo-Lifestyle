@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { Filter, Search } from "lucide-vue-next";
+import { LoaderCircle, Filter, Search } from "lucide-vue-next";
 import Page from "~/components/shared/composition/Page.vue";
 import EmptyStatement from "~/components/shared/empty/EmptyStatement.vue";
+import MediaEntityCard from "~/components/shared/home-cinema/MediaEntityCard.vue";
 
 definePageMeta({
   auth: {
@@ -10,6 +11,14 @@ definePageMeta({
   },
   displayName: "home-cinema.database.title",
 });
+
+const hcStore = useHomeCinemaStore();
+const { loading, firstLoading } = storeToRefs(hcStore);
+const database = computed(() => hcStore.richDatabase);
+
+if (firstLoading.value || !database.value.length) {
+  hcStore.loadMoreEntities();
+}
 </script>
 
 <template>
@@ -85,10 +94,29 @@ definePageMeta({
     </header>
 
     <main class="flex flex-col gap-6 flex-1">
+      <div
+        v-if="database.length"
+        class="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-4"
+      >
+        <MediaEntityCard
+          v-for="el in database"
+          :key="`media-${el.media.id}`"
+          :media="el.media"
+          :status="el.status"
+          :watch-listed="el.watchListed"
+        />
+      </div>
       <EmptyStatement
+        v-else-if="!loading"
         path-root="home-cinema.database.empty"
         no-action
       />
+      <div
+        v-if="loading"
+        class="grid place-items-center py-6"
+      >
+        <LoaderCircle class="animate-spin" />
+      </div>
     </main>
   </Page>
 </template>
