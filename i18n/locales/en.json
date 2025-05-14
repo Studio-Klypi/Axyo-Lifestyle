@@ -122,5 +122,24 @@
       "cta": "Add a quick task before it escapes your brain for good.",
       "action": "Add a quick task"
     }
+  },
+  "home-cinema": {
+    "database": {
+      "title": "Media Database",
+      "empty": {
+        "title": "Nothing to see here (yet)",
+        "caption": "The database curates itself-fancy, right?",
+        "cta": "Come back later to see what shows up."
+      }
+    },
+    "watchlist": {
+      "title": "My Watchlist",
+      "empty": {
+        "title": "Your watchlist is suspiciously empty",
+        "caption": "Planning to keep an eye on… absolutely nothing?",
+        "cta": "Add something before it becomes a ghost town in here.",
+        "action": "Explore our Database"
+      }
+    }
   }
 }
