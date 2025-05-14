@@ -1,5 +1,6 @@
 import type { IFile } from "~/types/miscellaneous/files";
 import type { TNullable } from "~/types/miscellaneous/generics";
+import type { IWatchlist } from "~/types/home-cinema";
 
 export interface IUserIdPair {
   id: number;
@@ -18,6 +19,7 @@ export interface IBackUser {
   subscriptionPlan: ESubscriptionPlan;
 
   avatar?: TNullable<IFile>;
+  watchlist?: IWatchlist[];
 
   createdAt: Date;
   updatedAt: Date;
