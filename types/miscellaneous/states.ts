@@ -25,8 +25,5 @@ export interface HomeCinemaState {
   database: IMediaEntity[];
   status: IMediaStatus[];
   firstLoading: boolean;
-  loading: {
-    database: boolean;
-    watchlist: boolean;
-  };
+  loading: boolean;
 }

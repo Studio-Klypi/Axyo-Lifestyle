@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Film, Filter, Search } from "lucide-vue-next";
+import { Filter, Search } from "lucide-vue-next";
 import Page from "~/components/shared/composition/Page.vue";
 import EmptyStatement from "~/components/shared/empty/EmptyStatement.vue";
 

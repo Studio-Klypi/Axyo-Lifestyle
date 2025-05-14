@@ -10,6 +10,11 @@ definePageMeta({
   },
   displayName: "home-cinema.watchlist.title",
 });
+
+const hcStore = useHomeCinemaStore();
+const { loading } = storeToRefs(hcStore);
+
+const watchlist = computed(() => hcStore.userWatchlist);
 </script>
 
 <template>
@@ -85,7 +90,21 @@ definePageMeta({
     </header>
 
     <main class="flex flex-col gap-6 flex-1">
-      <EmptyStatement path-root="home-cinema.watchlist.empty">
+      <template v-if="loading.watchlist">
+        loading
+      </template>
+      <template v-else-if="watchlist.length">
+        <p
+          v-for="el in watchlist"
+          :key="`media-${el.media.id}`"
+        >
+          {{ el.media.title }}
+        </p>
+      </template>
+      <EmptyStatement
+        v-else
+        path-root="home-cinema.watchlist.empty"
+      >
         <Button as-child>
           <NuxtLinkLocale to="/app/home-cinema/database">
             <Film />

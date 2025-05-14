@@ -1,3 +1,6 @@
+import type { IUser } from "~/types/authentication/users";
+import type { IMediaStatus } from "~/types/home-cinema";
+
 export default defineNuxtRouteMiddleware(async () => {
   const store = useUserStore();
 
@@ -10,4 +13,7 @@ export default defineNuxtRouteMiddleware(async () => {
   if (user.value) return;
 
   await store.recover();
+
+  if (!user.value) return;
+  useHomeCinemaStore().storeStatus((user.value as IUser).mediaStatus ?? []);
 });
