@@ -43,6 +43,11 @@
     "productivity": {
       "title": "Productivity",
       "quick-tasks": "Quick tasks"
+    },
+    "home-cinema": {
+      "title": "Home Cinema",
+      "database": "Database",
+      "watchlist": "Watchlist"
     }
   },
   "toasters": {

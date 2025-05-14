@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Sparkles, AlarmClockCheck, LayoutDashboard } from "lucide-vue-next";
+import { Sparkles, AlarmClockCheck, LayoutDashboard, Film, Bookmark } from "lucide-vue-next";
 import { Panda } from "~/components/shared/icons";
 import SidebarNavigation from "~/components/shared/navigation/sidebar/SidebarNavigation.vue";
 
@@ -23,6 +23,21 @@ const sidebarContent = [
         label: "navigation.productivity.quick-tasks",
         icon: AlarmClockCheck,
         url: "/app/productivity/quick-tasks",
+      },
+    ],
+  },
+  {
+    label: "navigation.home-cinema.title",
+    children: [
+      {
+        label: "navigation.home-cinema.database",
+        icon: Film,
+        url: "/app/home-cinema/database",
+      },
+      {
+        label: "navigation.home-cinema.watchlist",
+        icon: Bookmark,
+        url: "/app/home-cinema/watchlist",
       },
     ],
   },
