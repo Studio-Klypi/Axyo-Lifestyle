@@ -8,7 +8,8 @@
     "sign-up": "Sign up",
     "log-out": "Log out",
     "archived": "Archived",
-    "undo": "Undo"
+    "undo": "Undo",
+    "see-details": "See Details"
   },
   "context": {
     "user-menu": {
@@ -124,6 +125,12 @@
     }
   },
   "home-cinema": {
+    "entity-card": {
+      "casting": "Casting",
+      "genders": "Genders",
+      "watched-id": "I watched it",
+      "mark-as-watched": "Mark as \"Watched\""
+    },
     "database": {
       "title": "Media Database",
       "empty": {

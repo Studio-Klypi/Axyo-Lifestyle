@@ -2,6 +2,7 @@
 import { Search, Filter, Film } from "lucide-vue-next";
 import Page from "~/components/shared/composition/Page.vue";
 import EmptyStatement from "~/components/shared/empty/EmptyStatement.vue";
+import MediaEntityCard from "~/components/shared/home-cinema/MediaEntityCard.vue";
 
 definePageMeta({
   auth: {
@@ -12,8 +13,6 @@ definePageMeta({
 });
 
 const hcStore = useHomeCinemaStore();
-const { loading } = storeToRefs(hcStore);
-
 const watchlist = computed(() => hcStore.userWatchlist);
 </script>
 
@@ -90,17 +89,18 @@ const watchlist = computed(() => hcStore.userWatchlist);
     </header>
 
     <main class="flex flex-col gap-6 flex-1">
-      <template v-if="loading.watchlist">
-        loading
-      </template>
-      <template v-else-if="watchlist.length">
-        <p
+      <div
+        v-if="watchlist.length"
+        class="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))]"
+      >
+        <MediaEntityCard
           v-for="el in watchlist"
           :key="`media-${el.media.id}`"
-        >
-          {{ el.media.title }}
-        </p>
-      </template>
+          :media="el.media"
+          :status="el.status"
+          :watch-listed="true"
+        />
+      </div>
       <EmptyStatement
         v-else
         path-root="home-cinema.watchlist.empty"
