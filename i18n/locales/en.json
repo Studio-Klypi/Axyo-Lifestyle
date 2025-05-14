@@ -39,7 +39,11 @@
     },
     "home-cinema": {
       "movie": "Movie",
-      "tv-series": "TV Series"
+      "tv-series": "TV Series",
+      "duration": {
+        "hours": "{hours}h {minutes}m",
+        "seasons": "{value} seasons"
+      }
     }
   },
   "navigation": {

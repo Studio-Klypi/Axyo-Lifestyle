@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { toast } from "vue-sonner";
-import { LoaderCircle, Check, Circle } from "lucide-vue-next";
+import { LoaderCircle, Clock, Layers, Check } from "lucide-vue-next";
 import type { IMediaEntity, IMediaStatus } from "~/types/home-cinema";
 import MediaActions from "~/components/shared/home-cinema/MediaActions.vue";
 import type { IFile } from "~/types/miscellaneous/files";
@@ -67,6 +67,16 @@ async function toggleViewed() {
           </div>
 
           <div class="grid gap-4 pt-4 border-t sm:pt-0 sm:pl-4 sm:border-t-0 sm:border-l">
+            <section class="flex items-center gap-2 text-sm">
+              <template v-if="media.type === 'MOVIE'">
+                <Clock class="size-4" />
+                {{ $t("labels.home-cinema.duration.hours", { hours: Math.floor(media.duration / 60), minutes: media.duration % 60 }) }}
+              </template>
+              <template v-else-if="media.type === 'TV_SERIES'">
+                <Layers class="size-4" />
+                {{ $t("labels.home-cinema.duration.seasons", { value: media.duration }) }}
+              </template>
+            </section>
             <section class="grid">
               <p class="text-sm font-semibold text-muted-foreground">
                 {{ $t("home-cinema.entity-card.casting") }}
