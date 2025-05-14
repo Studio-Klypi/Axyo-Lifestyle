@@ -1,7 +1,7 @@
 import type { TNullable } from "~/types/miscellaneous/generics";
 import type { IUser } from "~/types/authentication/users";
 import type { IQuickTask } from "~/types/productivity/quick-tasks";
-import type { IMediaEntity, IMediaStatus } from "~/types/home-cinema";
+import type { IMediaEntity, IMediaStatus, IWatchlist } from "~/types/home-cinema";
 
 export interface UserState {
   user: TNullable<IUser>;
@@ -23,6 +23,7 @@ export interface QuickTasksState {
 
 export interface HomeCinemaState {
   database: IMediaEntity[];
+  watchlist: IWatchlist[];
   status: IMediaStatus[];
   firstLoading: boolean;
   loading: boolean;

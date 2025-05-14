@@ -1,10 +1,11 @@
 import { toast } from "vue-sonner";
 import type { HomeCinemaState } from "~/types/miscellaneous/states";
-import type { IMediaEntity, IMediaStatus } from "~/types/home-cinema";
+import type { IMediaEntity, IMediaStatus, IWatchlist } from "~/types/home-cinema";
 
 export const useHomeCinemaStore = defineStore("home-cinema", {
   state: (): HomeCinemaState => ({
     database: [],
+    watchlist: [],
     status: [],
     firstLoading: true,
     loading: false,
@@ -22,11 +23,7 @@ export const useHomeCinemaStore = defineStore("home-cinema", {
       media: IMediaEntity;
       status: IMediaStatus;
     }[] => {
-      const userStore = useUserStore();
-      const { user } = storeToRefs(userStore);
-
-      const userWatchlist = user.value?.watchlist;
-      return userWatchlist?.map((el) => {
+      return state.watchlist.map((el) => {
         const media = el.media as IMediaEntity;
         const status = state.status.find(s => s.mediaId === media.id) as IMediaStatus;
 
@@ -41,6 +38,12 @@ export const useHomeCinemaStore = defineStore("home-cinema", {
     },
   },
   actions: {
+    storeWatchlist(watchlist: IWatchlist[]) {
+      this.watchlist = watchlist;
+    },
+    storeStatus(status: IMediaStatus[]) {
+      this.status = status;
+    },
     async loadMoreEntities() {
       const t = this.getTranslator;
       this.loading = true;
@@ -55,9 +58,6 @@ export const useHomeCinemaStore = defineStore("home-cinema", {
         this.firstLoading = false;
         this.loading = false;
       }
-    },
-    storeStatus(status: IMediaStatus[]) {
-      this.status = status;
     },
   },
 });
