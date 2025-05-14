@@ -6,7 +6,7 @@ TableGroup HomeCinema [color: #126E7A] {
 
 Enum MediaType {
   MOVIE
-  TV_SERIE
+  TV_SERIES
 }
 Enum MediaNotation {
   BAD
@@ -31,6 +31,7 @@ Table MediaEntity {
 Table Watchlist {
   userUuid uuid pk [ref: > User.uuid]
   mediaId int pk [ref: > MediaEntity.id]
+  createdAt datetime
 }
 Table MediaStatus {
   userUuid uuid pk [ref: > User.uuid]
