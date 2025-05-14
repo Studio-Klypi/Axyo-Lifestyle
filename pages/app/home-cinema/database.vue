@@ -31,6 +31,7 @@ if (firstLoading.value || !database.value.length) {
         <Input
           class="pl-8"
           placeholder="Search..."
+          disabled
         />
         <Search class="size-4 absolute top-2.5 left-2.5 text-muted-foreground" />
       </div>
